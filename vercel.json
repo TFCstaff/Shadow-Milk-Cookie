@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "functions": {
+    "api/discord-user.js": { "runtime": "nodejs20.x" },
+    "api/discord-guilds.js": { "runtime": "nodejs20.x" }
+  }
+}
