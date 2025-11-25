@@ -1,17 +1,23 @@
-export default async function handler(req, res) {
-  try {
-    const userAgent = req.headers["user-agent"] || "ShadowMilkProxy";
+const fetch = require("node-fetch");
 
-    const response = await fetch("https://discord.com/api/v10/users/@me", {
+export default async function handler(req, res) {
+  // Forward the request to your Katabump dashboard
+  const url = `http://145.239.65.118:20319${req.url}`;
+
+  try {
+    const response = await fetch(url, {
+      method: req.method,
       headers: {
-        Authorization: `Bearer ${req.headers["authorization"]}`,
-        "User-Agent": userAgent,
+        "Content-Type": "application/json",
+        "Authorization": req.headers.authorization || ""
       },
+      body: req.method === "POST" ? JSON.stringify(req.body) : undefined
     });
 
-    const data = await response.json();
-    res.status(response.status).json(data);
-  } catch (error) {
-    res.status(500).json({ error: "Proxy error", details: error.message });
+    const data = await response.text(); // forward raw text
+    res.status(response.status).send(data);
+  } catch (err) {
+    console.error("Proxy error:", err);
+    res.status(500).json({ error: "Proxy failed" });
   }
 }
