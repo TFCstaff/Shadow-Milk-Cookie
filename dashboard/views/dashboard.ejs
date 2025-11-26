@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body { background:#0b0f1e; color:#00aaff; font-family:sans-serif; padding:50px;}
+input, textarea { width: 300px; margin:5px; padding:5px;}
+button { background:#001122; color:#00aaff; border:none; padding:10px 20px; border-radius:5px;}
+</style>
+</head>
+<body>
+<h1>Shadow Milk Dashboard</h1>
+<p>Logged in as <%= user.username %></p>
+
+<h2>Create Application Template</h2>
+<form action="/dashboard/template/create" method="POST">
+<input name="name" placeholder="Template Name" required><br>
+<textarea name="questions" placeholder="One question per line" required></textarea><br>
+<button type="submit">Create Template</button>
+</form>
+
+<h2>Your Templates</h2>
+<ul>
+<% templates.forEach(t=>{ %>
+<li><%= t.name %> - <a href="/apply/<%= t.guild_id %>/<%= t.id %>">Apply Link</a> - <a href="/review/<%= t.guild_id %>">Review</a></li>
+<% }) %>
+</ul>
+<a href="/dashboard/settings">Server Settings</a>
+</body>
+</html>
