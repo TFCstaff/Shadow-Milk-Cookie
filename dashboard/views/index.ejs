@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shadow Milk's Dashboard</title>
+<style>
+body { background:#0b0f1e; color:#00aaff; font-family:sans-serif; text-align:center; padding:50px;}
+a { color:#00aaff; text-decoration:none; padding:10px 20px; background:#001122; border-radius:5px;}
+
+.neon-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  color: cyan;
+  border: 2px solid cyan;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 18px;
+  background: transparent;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.neon-btn:hover {
+  color: black;
+  background: cyan;
+  box-shadow: 0 0 15px cyan, 0 0 35px cyan;
+  transform: scale(1.05);
+}
+
+.top-image {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+</style>
+</head>
+<body>
+
+<img src="https://i.imgur.com/0Crheng.gif" class="top-image">
+
+<h1>Welcome to Shadow Milk Cookie's Dashboard!</h1>
+
+<% if(!user){ %>
+<a class="neon-btn" href="/login">Login with Discord</a>
+<% } else { %>
+<p>Hello <%= user.username %>!</p>
+<a class="neon-btn" href="/dashboard">Open Dashboard</a><br><br>
+<a class="neon-btn" href="/logout">Logout</a>
+<% } %>
+
+</body>
+</html>
