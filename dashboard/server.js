@@ -81,7 +81,15 @@ passport.use(new DiscordStrategy({
     }
 }));
 
-app.use(session({ secret: "shadowmilksecret", resave: false, saveUninitialized: false }));
+app.use(session({
+    secret: process.env.SESSION_SECRET || "dev-secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax"
+    }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -165,5 +173,9 @@ app.post("/dashboard/settings", auth, (req, res) => {
 });
 
 // ---- START SERVER ----
-const PORT = process.env.PORT || 20319;
-app.listen(PORT, () => console.log(`Shadow Milk Dashboard running on port ${PORT}`));
+const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => console.log(`Shadow Milk Dashboard running on port ${PORT}`));
+}
+
+module.exports = app;
