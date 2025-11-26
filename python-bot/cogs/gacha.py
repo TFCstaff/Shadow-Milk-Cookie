@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 import aiosqlite
 import time
-from utils.gacha_sim import simulate_gacha, RARITY_COLORS, RARITY_POOLS, ASCENSION_COSTS, MAX_STARS
+from python-bot.utils.gacha_sim import simulate_gacha, RARITY_COLORS, RARITY_POOLS, ASCENSION_COSTS, MAX_STARS
 
 CUTTER_NAME = "<:SMC_cutter:1411067252681211996> Deceitful Cutter"
 LOADING_EMOJI = "<a:SMCloading:1433000133179736186>"
