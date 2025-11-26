@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Review Applications</title>
+<style>
+body { background:#0b0f1e; color:#00aaff; font-family:sans-serif; padding:50px;}
+table { border-collapse: collapse; width: 100%;}
+td, th { border:1px solid #00aaff; padding:10px;}
+</style>
+</head>
+<body>
+<h1>Applications Review</h1>
+<table>
+<tr><th>User ID</th><th>Answers</th><th>Status</th></tr>
+<% submissions.forEach(s=>{ %>
+<tr>
+<td><%= s.user_id %></td>
+<td><pre><%= s.answers %></pre></td>
+<td><%= s.status %></td>
+</tr>
+<% }) %>
+</table>
+</body>
+</html>
