@@ -1,0 +1,42 @@
+# ------------------------
+# PYTHON
+# ------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+.env
+
+# Ignore SQLite databases if private
+*.db
+
+# ------------------------
+# NODE.JS
+# ------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+
+# ------------------------
+# OS Garbage files
+# ------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------
+# App-specific secrets and configs
+# ------------------------
+*.log
+.env.local
+.env.production
+.env.development
+.env.test
+secret.json
