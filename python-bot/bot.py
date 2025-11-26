@@ -1,9 +1,7 @@
 import discord
 from discord.ext import commands
 import os
-from dotenv import load_dotenv
 import inspect
-load_dotenv()
 
 # --- BOT SETUP ---
 intents = discord.Intents.all()
