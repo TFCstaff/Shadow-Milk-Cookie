@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-from utils import hiddenbeast_sim
+from python-bot.utils import hiddenbeast_sim
 
 MAX_PLAYERS = 15
 
