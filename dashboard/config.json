@@ -1,4 +1,5 @@
 {
   "clientID": "1428029742740930772",
+  "clientSecret": "CLIENT_SECRET",
   "callbackURL": "https://shadow-milk-cookie.vercel.app/callback"
 }
