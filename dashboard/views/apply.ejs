@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Apply - <%= template.name %></title>
+<style>
+body { background:#0b0f1e; color:#00aaff; font-family:sans-serif; padding:50px;}
+input, textarea { width: 300px; margin:5px; padding:5px;}
+button { background:#001122; color:#00aaff; border:none; padding:10px 20px; border-radius:5px;}
+</style>
+</head>
+<body>
+<h1><%= template.name %></h1>
+<form method="POST">
+<input type="hidden" name="user_id" value="123456789"><!-- replace with real ID from dashboard or bot -->
+<% JSON.parse(template.questions).forEach((q,i)=>{ %>
+<label><%= q %></label><br>
+<textarea name="q<%= i %>" required></textarea><br>
+<% }) %>
+<button type="submit">Submit Application</button>
+</form>
+</body>
+</html>
