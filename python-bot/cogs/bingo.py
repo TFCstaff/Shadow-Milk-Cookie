@@ -7,7 +7,7 @@ import asyncio
 import aiosqlite
 import io
 
-from utils.bingo_card import generate_bingo_card, generate_card_image
+from python-bot.utils.bingo_card import generate_bingo_card, generate_card_image
 
 REWARD_LINE = 500
 REWARD_FILL = 5000
