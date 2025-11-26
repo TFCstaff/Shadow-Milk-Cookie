@@ -7,7 +7,11 @@ const DiscordStrategy = require("passport-discord").Strategy;
 const fetch = require("node-fetch"); // Make sure to `npm install node-fetch`
 
 // Load Discord bot credentials
-const config = require(path.join(__dirname, "config.json"));
+const config = {
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: process.env.CALLBACK_URL
+};
 
 // Vercel proxy URL
 const PROXY_URL = "https://shadow-milk-cookie.vercel.app/api/discord-proxy";
@@ -114,11 +118,11 @@ app.post("/dashboard/template/create", auth, (req, res) => {
 });
 
 // Apply page
-app.get("/apply/:guild_id/:template_id", (req, res) => {
+app.get("/apply/:guild_id/:template_id", auth, (req, res) => {
     const { guild_id, template_id } = req.params;
     db.get("SELECT * FROM templates WHERE id=? AND guild_id=?", [template_id, guild_id], (err, template) => {
         if (!template) return res.send("Application not found");
-        res.render("apply", { template });
+        res.render("apply", { template, user: req.user });
     });
 });
 
