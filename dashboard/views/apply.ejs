@@ -9,14 +9,21 @@ button { background:#001122; color:#00aaff; border:none; padding:10px 20px; bord
 </style>
 </head>
 <body>
+
 <h1><%= template.name %></h1>
+
 <form method="POST">
-<input type="hidden" name="user_id" value="123456789"><!-- replace with real ID from dashboard or bot -->
-<% JSON.parse(template.questions).forEach((q,i)=>{ %>
-<label><%= q %></label><br>
-<textarea name="q<%= i %>" required></textarea><br>
-<% }) %>
-<button type="submit">Submit Application</button>
+
+    <!-- 🔹 This now uses the real logged-in user -->
+    <input type="hidden" name="user_id" value="<%= user.id %>">
+
+    <% JSON.parse(template.questions).forEach((q,i)=>{ %>
+        <label><%= q %></label><br>
+        <textarea name="q<%= i %>" required></textarea><br>
+    <% }) %>
+
+    <button type="submit">Submit Application</button>
 </form>
+
 </body>
 </html>
